@@ -1,3 +1,355 @@
+https://t-sibiraj.github.io/sql/                    [Light Mode]()                  [Dark Mode]()  
+
+# DATABASE CONCEPTS:
+
+​                             #  **SKIP TO SQL  IF YOU ALREADY KNOW DATABASE CONCEPTS  #** 
+
+ **EXTENDED READING FOR DATABASE CONCEPTS :**
+
+ https://cbseacademic.nic.in/web_material/doc/cs/2_Computer_Science_Python_ClassXII.pdf
+
+
+
+### DATABASE
+
+```sql
+Database** is a **collection of related information** that is **organized** in such a way that it supports for **easy access, modification and maintainance data**
+
+Examples of database: Ms-Access, **MySQL**, PostgreSQL, **SQLite, Microsoft SQL Server, Oracle**, SAP, dBASE, FoxPro, etc..
+```
+
+
+
+### RELATION:
+
+```
+In **database, a relation means a 'table**', in which data are organized in the **form of rows and columns**.
+```
+
+
+
+### DOMAIN:
+
+A domain is a **set of acceptable values of a particular column**, which is based on various properties and data types.
+
+| Ad No | Name | Gender | Marital Status |     SUBJECT      |
+| :---: | :--: | :----: | :------------: | :--------------: |
+|  101  |  A   |  MALE  |   UNMARRIED    |       MATH       |
+|  105  |  B   | FEMALE |    MARRIED     |     PHYSICS      |
+|  203  |  C   |  MALE  |    DIVORCED    |    CHEMSITRY     |
+|  205  |  D   | FEMALE |     WIDOW      | COMPUTER SCIENCE |
+
+For example: 
+
+**(i)** The domain of gender column has a set of two possible values i.e, **Male or Female.** 
+
+**(ii)** The domain of marital status has a set of four possible values i.e, **Married, Unmarried, Widows and Divorced**
+
+** **(iii)** The domain of subject has a **set of five possible** values i.e., **Math's,physics,chemistry,computer science and english**
+
+
+
+
+
+### TUPLE:
+
+```
+Horizontal subset/information in a table is called tuple. The tuple is also known as a 'record', which gives particular information of the relation (table). 
+
+For example: 
+
+(i) In customer table, one row gives information about one customer only. 
+
+(ii) In student table, one row gives information about one student only.
+```
+
+
+
+### KEY:
+
+Key is of **four types**:
+
+​	**(i) Primary Key**
+
+​	**(ii) Candidate Key**
+
+​	**(iii) Foreign Key**
+
+​	**(iv) Alternate Key**
+
+### **Primary Key:** 
+
+```sql
+A column or **set of columns that uniquely identifies a row** within a table is called primary key. 
+
+PRIMARY KEY ---> THIS IS SERVES AS AN UNIQUE INDENTIFIER
+		   ---> TWO PERSON CAN HAVE SAME NAME BUT THEY CAN''T HAVE SAME FINGERPRINT
+            ---> HERE FINGERPRINT SERVES THE PURPOSE OF PRIMARY KEY
+		   ---> IN TABLE WE MUST HAVE A PRIMARY KEY TO UNIQUELY IDENTIFY A RECORDS IN A TABLE 
+
+                   ╔════╦══════╦════════╗              
+                   ║ id ║ name ║ gender ║
+                   ╠════╬══════╬════════╣
+                   ║ 2  ║ sam  ║ male   ║
+                   ╠════╬══════╬════════╣
+                   ║ 1  ║ ram  ║ female ║
+                   ╠════╬══════╬════════╣
+                   ║ 3  ║ ram  ║ male   ║
+                   ╚════╩══════╩════════╝
+                  TABLE NAME: GENDER 
+
+IN THE TABLE GENDER WE CAN SELECT id HAS PRIMARY KEY AS IT ONLY HAS UNIQUE RECORDS. WE CAN''T USE NAME AND GENDER AS PRIMARY KEY AS TWO PERSON CAN HAVE SAME NAME AND TWO PERSON CAN HAVE SAME GENDER
+```
+
+
+
+### Candidate Key: 
+
+```
+Candidate keys are set of fields (columns with unique values) in the relation that are eligible to act as a primary key.
+
+Candidate key  = Collection of Primary key
+```
+
+ 
+
+### Alternate Key:
+
+ 
+
+```
+Out of the candidate keys, after selecting a key as primary key, the remaining keys are called alternate key.
+
+Alternate Key =  Candidate key - Primary key
+```
+
+ 
+
+### Foreign Key:
+
+ A foreign key is a field (or collection of fields) in one table that **uniquely identifies a row of another table**. In other words, a foreign key is a column or a combination of columns that is used to **establish a link between two tables.**
+
+```
+#FOREIGN KEY CONSTARINT
+
+#FOREIGN KEY IS LIKE PRIMARY KEY. IT IS USED IN RDBMS.
+
+#SO FAR WE HAVE ONLY SEE DBMS.
+
+DBMS ---> Database Managament System
+RDBMS ---> Relational Database Management System
+
+IN RDBMS TABLES ARE IN RELATION WITH EACH OTHER BUT IN DBMS TABLES ARE NOT IN  RELATION WITH EACH OTHER.
+
+
+DBMS
+
+DATABSSE NAME: RDBMS
+
+╔════╦══════╦══════╗                   ╔════╦══════╦════════╗              
+║ id ║ name ║ age  ║                   ║ id ║ name ║ gender ║
+╠════╬══════╬══════╣                   ╠════╬══════╬════════╣
+║ 1  ║ ram  ║ 10   ║                   ║ 2  ║ sam  ║ male   ║
+╠════╬══════╬══════╣                   ╠════╬══════╬════════╣
+║ 2  ║ sam  ║ 20   ║                   ║ 1  ║ ram  ║ female ║
+╠════╬══════╬══════╣                   ╠════╬══════╬════════╣
+║ 3  ║ ram  ║ 30   ║                   ║ 3  ║ ram  ║ male   ║
+╚════╩══════╩══════╝                   ╚════╩══════╩════════╝
+TABLE NAME: AGE                        TABLE NAME: GENDER 
+
+
+AS YOU CAN SEE BOTH THE TABELS ARE RELATED TO EACH OTHER BY THE ID COLOUMN
+
+id column in table AGE is called the primary key and id in table GENDER is called primary key
+
+id column is called as the foriegn key as it is used to relate the two tables AGE AND GENDER.
+WE can even choose the gender coloumn as the primary key but we can''t choose it as foreign key as it is not present in the age table.
+
+
+DATABASE DBMS:
+╔═══════╦══════╦══════╗                   ╔════╦══════╦════════╗              
+║ weight║ name ║ age  ║                   ║ id ║ name ║ gender ║
+╠═══════╬══════╬══════╣                   ╠════╬══════╬════════╣
+║ 40    ║ ram  ║ 10   ║                   ║ 2  ║ sam  ║ male   ║
+╠═══════╬══════╬══════╣                   ╠════╬══════╬════════╣
+║ 50    ║ sam  ║ male ║                   ║ 1  ║ ram  ║ female ║
+╠═══════╬══════╬══════╣                   ╠════╬══════╬════════╣
+║ 60    ║ ram  ║ male ║                   ║ 3  ║ ram  ║ male   ║
+╚═══════╩══════╩══════╝                   ╚════╩══════╩════════╝      
+TABLE NAME: AGE                            TABLE NAME: GENDER 
+
+TWO TABLES ARE NOT RELATED TO EACH OTHER SO IT IS CALLED AS DBMS
+```
+
+
+
+## Degree:
+
+```
+The number of attributes(fields)(column) in a table
+
+Degree ---> no of columns
+```
+
+
+
+## Cardinality:
+
+```
+The number of tuple(record)(rows) in a table
+
+Cardinality ---> no of rows
+```
+
+![‪](images\cbse-keys.jpg)
+															SOURCE: cbseacademic.com
+
+```
+Candidate Key: AdNo and Name has unique values. 
+
+Primary Key: Out of the AdNo and Name, AdNo is the primary key. 
+
+Alternate Key: In the candidate key, AdNo is the primary key and the Name is the Alternate key. 
+```
+
+
+
+![https://www.guru99.com/images/1/100518_0517_DBMSKeysPri1.png](https://www.guru99.com/images/1/100518_0517_DBMSKeysPri1.png)
+
+​																SOURCE:www.guru99.com
+
+
+
+![](https://powerbidocs.com/wp-content/uploads/2019/12/SQL-Keys.png)
+
+​																	SOURCE: powerbidocs.com
+
+Resources:
+
+```
+https://powerbidocs.com/2019/12/25/sql-keys/
+```
+
+
+
+## Advantages of SQL:
+
+```
+(i) SQL is portable
+
+(ii) High Speed
+
+(iii) Easy to learn
+
+(iv)SQL is used with any DBMS system with any vendor: SSQL is used for relational databases: SQL is widely used for relational databases. 
+
+(v)SQL acts as both programming language and interactive language: 
+
+(vi)Client/Server language:
+
+(vii)Supports object based programming
+```
+
+
+
+## SOME MYSQL SQL ELEMENTS:
+
+## (i) Literals(have fixed value):
+
+```
+numeric literal --> 53 ,64
+
+string literal ---> "abc"
+
+real literals ---> 17.0 ,  17.5
+```
+
+
+
+## (ii) Data Types:
+
+###  (I) Numeric :
+
+### (I) Number:
+
+	Number:
+	
+	Positive numbers in the range 1 x 10-130 to 9.99...9 x 10125 with up to 38 significant digits.
+	
+	Negative numbers from -1 x 10-130 to 9.99...99 x 10125 with up to 38 significant digits.
+	Zero.
+### (II) Decimal/Float:
+
+```
+DECIMAL[ (p[ , s] )]` 
+
+– 'p' is the precision or the total number of significant decimal digits, where the most significant digit is the left-most nonzero digit and the least significant digit is the right-most known digit.
+
+– 's' is the scale or the number of digits from the decimal point to the least significant digit.
+```
+
+
+
+​	**(III) INT/INTERGER**
+
+​    **(IV) FLOAT**
+
+### (ii) CHARACTER OR STRING:
+
+```
+CHAR(10) has fixed length, right padded with spaces.
+VARCHAR(10) has fixed length, right padded with NULL
+VARCHAR2(10) has variable length.
+
+the difference between VARCHAR and VARCHAR2 is that VARCHAR is ANSI standard but takes up space
+for variables, whereas the VARCHAR2 is used only in Oracle but makes more efficient use of space.
+```
+
+### (III) DAT AND TIME:
+
+```
+DATE: YYYY-MM-DD -> 2021-01-01
+
+DATETIME: YYYY-MM-DD HH:MM:SS 2021-01-01 10:10:10
+
+TIME: HH:MM:SS 11:59:10
+
+YEAR: 
+
+-> YEAR(2) -> 2-digit format(21)
+-> YEAR(4) -> 4-digit format(2021) 
+
+TIMESTAMP: (YYYYMMDDHHMMSS) --> 20210101060510
+```
+
+
+
+## TYPES  OF  SQL  STATEMENTS 
+
+### **(i)Data Definition Language **(DDL) statement:
+
+DDL statements are used to **create structure of a table, modify the existing structure of the table and remove the existing table**. Some of the DDL statements are CREATE TABLE, ALTER TABLE and DROP TABLE.
+
+**Grant and revoke privileges and roles and maintenance commands**
+
+### **(ii)** **Data Manipulation Language** (DML) statement:
+
+Data Manipulation Language (DML) statements are used to **access and manipulate data in existing tables.** The manipulation includes **inserting data into tables, deleting data from the tables, retrieving data and modifying the existing data**. The common DML statements are SELECT, UPDATE, DELETE and INSERT.
+
+**(iii) Transaction Control Language(TCL) Commands:**
+
+​	**COMMIT , ROLLBACK , SAVEPOINT , SET TRANSACTION**
+
+**(iv) Session Control Commands**
+
+**(v) System Control Commands**
+
+
+
+------
+
+
+
 # SQL
 
 (Structured Query Language is a standard language used for accessing databases)
@@ -10,7 +362,7 @@ SQL Server:https://docs.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver1
 
 
 
-> -               ***SQL IS CASE INSENSITIVE***
+> - ​              ***SQL IS CASE INSENSITIVE***
 >
 >   ------
 >
@@ -1640,9 +1992,9 @@ SYNAX: DROP TABLE IF EXISTS records; #---> Table records will be deleted if it e
 DATABASE INTERGRITY CONSTRAINTS:
 (i)   Unique constraint
 (ii)  Primary Key constraint
-(iii) Primary Key constraint
-(iv)  Primary Key constraint
-(v)   Primary Key constraint
+(iii) Foreign Key constraint
+(iv)  CHeck constraint
+(v)   Default Key constraint
 (vi)  NOT NULL
 (vii) ENUM
 (Vii) SET
@@ -1943,7 +2295,9 @@ WE CAN'' DO THAT USING TRUNCATE
                                     DELETE VS TRUNCATE
 ```
 
-![image-20220113005614894](C:\Users\Sibiraj\AppData\Roaming\Typora\typora-user-images\image-20220113005614894.png)
+![image-20220113005614894](images\image-20220113005614894.png)
+
+​																		SOURCE: t-sibiraj.github.io/sql
 
 ## ROLLBACK   (COMING SOON)
 
@@ -2002,6 +2356,8 @@ TABLE:
 |    3 | hari         | hari@outlook.com | 2002 |          30 |   NULL |  NULL |             NULL |
 |    4 | ramu         | ramu@gmail.com   | 2004 |          20 |   NULL |  NULL |             NULL |
 +------+--------------+------------------+------+-------------+--------+-------+------------------+
+===================================================================================================
+
 
 #TO ADD A COLUMN WITH A CONSTRAINT
 
@@ -2077,6 +2433,8 @@ TABLE:
         | description  | varchar(50) | YES  |     | NULL    |       |
         +--------------+-------------+------+-----+---------+-------+
 
+===================================================================================================
+
 #TO CHANGE THE ORDER OF THE COLUMN
 
 SYNTAX: ALTER TABLE table_name 
@@ -2132,6 +2490,7 @@ TABLE:
         |   3 | hari         | hari@outlook.com | 2002 |          30 |
         |   4 | ramu         | ramu@gmail.com   | 2004 |          20 |
         +-----+--------------+------------------+------+-------------+
+===================================================================================================
 
 #TO REMOVE THE PRIMARY KEY
 
@@ -2151,6 +2510,8 @@ TABLE:
         | year         | int         | YES  |     | NULL    |       |
         | column_name  | int         | YES  |     | NULL    |       |
         +--------------+-------------+------+-----+---------+-------+
+===================================================================================================
+
 
 #TO REMOVE THE FOREIGH KEY 
 
@@ -2159,6 +2520,8 @@ SYNTAX: ALTER TABLE table_name
 
 CODE: ALTER TABLE records
 	  DROP FOREIGN KEY email; #email will no longer be foreign key
+
+===================================================================================================
 
 
 #CASCADE
@@ -2240,7 +2603,9 @@ CODE: SELECT *
 #Each row in records table will be multiplied with all the row from test_table
 ```
 
-![image-20220113030716529](C:\Users\Sibiraj\AppData\Roaming\Typora\typora-user-images\image-20220113030716529.png)
+![image-20220113030716529](images\image-20220113030716529.png)
+
+​																		SOURCE: t-sibiraj.github.io/sql
 
 ```sql
 AS you can see the row  1,ram,ram@gmail.com,2004 from table records
@@ -2254,7 +2619,9 @@ CODE: SELECT student_name , present
 ----> student_name [cartesian product] present
 ```
 
-![image-20220113031336907](C:\Users\Sibiraj\AppData\Roaming\Typora\typora-user-images\image-20220113031336907.png)
+![image-20220113031336907](images\image-20220113031336907.png)
+
+​																	SOURCE: t-sibiraj.github.io/sql
 
 ```
 As you can see above row ram is multiplied with all the three rows pressent in the **present column**. And the same is repeated with sam , hari and ramu row.
@@ -2296,11 +2663,11 @@ repository: storage location for software packages
 PIP is nothing but a package managament system. It is used to download libraries , modules created by other people  which they have uploaded to PyPI.
 ```
 
-![image-20220113034025814](C:\Users\Sibiraj\AppData\Roaming\Typora\typora-user-images\image-20220113034025814.png)
+![image-20220113034025814](images\image-20220113034025814.png)
 
-																			source: pypi.org     
-	
-																			PyPI website homepage
+​																				SOURCE: pypi.org     
+
+​																			PyPI website homepage
 
 ```SQL
 #STEPS TO INSTALL PYTHON LIBRARIES FROM PyPI IN WINDOWS:
@@ -2350,3 +2717,4 @@ database connectivity applications
 - [x] NETWORKING 
 
 - [x] SQL
+
