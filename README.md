@@ -13,17 +13,17 @@ https://t-sibiraj.github.io/sql/                    [Light Mode]()              
 ### DATABASE
 
 ```sql
-Database** is a **collection of related information** that is **organized** in such a way that it supports for **easy access, modification and maintainance data**
+Database is a collection of related information that is organized in such a way that it supports for easy access, modification and maintainance data
 
-Examples of database: Ms-Access, **MySQL**, PostgreSQL, **SQLite, Microsoft SQL Server, Oracle**, SAP, dBASE, FoxPro, etc..
+Examples of database: Ms-Access, MySQL, PostgreSQL, SQLite, Microsoft SQL Server, Oracle, SAP, dBASE, FoxPro, etc..
 ```
 
 
 
 ### RELATION:
 
-```
-In **database, a relation means a 'table**', in which data are organized in the **form of rows and columns**.
+```sql
+In database, a relation means a 'table', in which data are organized in the form of rows and columns.
 ```
 
 
