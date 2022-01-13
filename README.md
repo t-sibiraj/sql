@@ -1,4 +1,4 @@
-https://t-sibiraj.github.io/sql/            [Light Mode](https://t-sibiraj.github.io/sql/)                  [Dark Mode](https://htmlpreview.github.io/?https://github.com/t-sibiraj/sql/blob/main/index-dark.html)          [Download](https://github.com/t-sibiraj/sql/raw/main/sql.pdf)
+https://github.com/t-sibiraj/sql            [Light Mode](https://t-sibiraj.github.io/sql/)                  [Dark Mode](https://htmlpreview.github.io/?https://github.com/t-sibiraj/sql/blob/main/index-dark.html)          [Download](https://github.com/t-sibiraj/sql/raw/main/sql.pdf)
 
 # DATABASE CONCEPTS:
 
