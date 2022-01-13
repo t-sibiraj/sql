@@ -1,4 +1,4 @@
-https://t-sibiraj.github.io/sql/                    [Light Mode]()                  [Dark Mode]()  
+https://t-sibiraj.github.io/sql/                    [Light Mode](https://t-sibiraj.github.io/sql/)                  [Dark Mode]()  
 
 # DATABASE CONCEPTS:
 
@@ -989,7 +989,7 @@ OUTPUT:
         |    1 | ram          | ram@gmail.com  | 2004 |          10 |
         |    4 | ramu         | ramu@gmail.com | 2004 |          20 |
         +------+--------------+----------------+------+-------------+
-
+        
 ```
 ```sql
 #OR (AT LEAST ONE OF THE STATEMENT SHOULD BE TRUE) 
