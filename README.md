@@ -129,7 +129,7 @@ Alternate Key =  Candidate key - Primary key
 
  A foreign key is a field (or collection of fields) in one table that **uniquely identifies a row of another table**. In other words, a foreign key is a column or a combination of columns that is used to **establish a link between two tables.**
 
-```
+```sql
 #FOREIGN KEY CONSTARINT
 
 #FOREIGN KEY IS LIKE PRIMARY KEY. IT IS USED IN RDBMS.
@@ -234,7 +234,7 @@ https://powerbidocs.com/2019/12/25/sql-keys/
 
 ## Advantages of SQL:
 
-```
+```sql
 (i) SQL is portable
 
 (ii) High Speed
@@ -256,7 +256,7 @@ https://powerbidocs.com/2019/12/25/sql-keys/
 
 ## (i) Literals(have fixed value):
 
-```
+```sql
 numeric literal --> 53 ,64
 
 string literal ---> "abc"
@@ -272,12 +272,14 @@ real literals ---> 17.0 ,  17.5
 
 ### (I) Number:
 
-	Number:
-	
-	Positive numbers in the range 1 x 10-130 to 9.99...9 x 10125 with up to 38 significant digits.
-	
-	Negative numbers from -1 x 10-130 to 9.99...99 x 10125 with up to 38 significant digits.
-	Zero.
+```sq;
+Number:
+
+Positive numbers in the range 1 x 10-130 to 9.99...9 x 10125 with up to 38 significant digits.
+
+Negative numbers from -1 x 10-130 to 9.99...99 x 10125 with up to 38 significant digits.
+Zero.
+```
 ### (II) Decimal/Float:
 
 ```
@@ -296,7 +298,7 @@ DECIMAL[ (p[ , s] )]`
 
 ### (ii) CHARACTER OR STRING:
 
-```
+```sql
 CHAR(10) has fixed length, right padded with spaces.
 VARCHAR(10) has fixed length, right padded with NULL
 VARCHAR2(10) has variable length.
@@ -307,7 +309,7 @@ for variables, whereas the VARCHAR2 is used only in Oracle but makes more effici
 
 ### (III) DAT AND TIME:
 
-```
+```sql
 DATE: YYYY-MM-DD -> 2021-01-01
 
 DATETIME: YYYY-MM-DD HH:MM:SS 2021-01-01 10:10:10
