@@ -1,4 +1,4 @@
-https://t-sibiraj.github.io/sql/                    [Light Mode](https://t-sibiraj.github.io/sql/)                  [Dark Mode]()  
+https://t-sibiraj.github.io/sql/                    [Light Mode](https://t-sibiraj.github.io/sql/)                  [Dark Mode](https://github.com/t-sibiraj/sql/blob/main/index-dark.html)  
 
 # DATABASE CONCEPTS:
 
