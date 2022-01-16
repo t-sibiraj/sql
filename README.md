@@ -2093,6 +2093,60 @@ DATABASE DBMS:
 TABLE NAME: AGE                            TABLE NAME: GENDER 
 
 TWO TABLES ARE NOT RELATED TO EACH OTHER SO IT IS CALLED AS DBMS
+
+
+====================================================================================================
+
+#FIRST LET US CREATE A PARENT TABLE WITH A PRIMARY KEY sno
+
+CODE: CREATE TABLE parent(sno integer NOT NULL PRIMARY KEY)
+
+#NOW LET US CREATE A CHILD TABLE WITH A FOREIGN KEY sno AND id AS PRIMARY KEY
+
+CODE: CREATE TABLE child 
+	(sno integer NOT NULL PRIMARY KEY,
+
+    sno integer REFERENCES parent (sno)) 
+    #If we skip sno MySQL will the reference the primary key of the the table parent by default
+
+====================================================================================================
+#ON DELETE CASCADE
+
+#FIRST LET US CREATE A PARENT TABLE WITH A PRIMARY KEY sno
+CODE: CREATE TABLE parent(sno integer NOT NULL PRIMARY KEY)
+
+#NOW LET US CREATE A CHILD TABLE WITH A FOREIGN KEY sno AND id AS PRIMARY KEY
+CODE: CREATE TABLE child 
+	(sno integer NOT NULL PRIMARY KEY,
+
+    sno integer REFERENCES parent (sno)) ON DELETE CASCADE
+
+				-----------------------------------------------------
+ON DELETE CASCADE:
+
+--> To be used when you want the related rows in child table to get deleted when the row gets deleted in the parent table
+
+--> For example let''s say a row you deleted a row in the parent table all the related row which are present in the child will get deleted automatically if you use ON DELETE CASCADE
+
+
+====================================================================================================
+#ON UPDATE CASCADE
+
+#FIRST LET US CREATE A PARENT TABLE WITH A PRIMARY KEY sno
+CODE: CREATE TABLE parent(sno integer NOT NULL PRIMARY KEY)
+
+#NOW LET US CREATE A CHILD TABLE WITH A FOREIGN KEY sno AND id AS PRIMARY KEY
+CODE: CREATE TABLE child 
+	(sno integer NOT NULL PRIMARY KEY,
+
+    sno integer REFERENCES parent (sno)) ON UPDATE CASCADE
+				-----------------------------------------------------
+ON UPDATE CASCADE:
+    
+--> To be used when you want the changes in the parent table to reflect back in the child table(only related rows get updated with the new changes)
+
+--> For example let''s say you update a row in the parent table all the related row which are present in the child table will get updated with the new changes automatically if you use ON UPDATE CASCADE.
+ 
 ```
 
 ### TABLE   CONSTRAINTS
@@ -2105,6 +2159,7 @@ CODE: CREATE TABLE t1
      name  VARCHAR(10) NOT NULL,
      email VARCHAR(20) NOT NULL
      UNIQUE(name , email));   #UNIQUE CONTRAINT WILL BE APLLIED TO name and email column
+	FOREIGN KEY(sno) REFERENCES records(sno)
 ```
 
 ### NAMED    CONSTRAINTS
@@ -2259,16 +2314,25 @@ WE CAN'' DO THAT USING TRUNCATE
 
 ​																		SOURCE: t-sibiraj.github.io/sql
 
-## ROLLBACK   (COMING SOON)
+## ROLLBACK   
 
 ```sql
 THE FOLLOWING CONCEPT IS (/*OUT OF SYLLABUS */)
 
 OUT OF SYLLABUS    ------      OUT OF SYLLABUS   ------  OUT OF SYLLABUS  ---- OUT OF SYLLABUS -----
 
-#TRANSACTION LOG
+#WHEN WE DO SOME CHANGES ,WE CAN UNDO THE CHANGES IF WE USE DELETE, WHICH WE CAN'T DO WHEN WE USE TRUNCATE
 
-CODE: BEGIN TRANSACTION 
+commit ---> to be used to save changes
+rollback --> like the undo button which we can  use to rollback the changes
+
+
+CODE: mysql>DELETE FROM records
+	       WHERE year = 2004;
+	
+	mysql> COMMIT
+	mysql> ROLLBACK  
+#now we can undo the last transaction. The commit acts like an checkpoint to which we can revert back using ROLLBACK
 
 OUT OF SYLLABUS    ------      OUT OF SYLLABUS   ------  OUT OF SYLLABUS  ---- OUT OF SYLLABUS -----
 ```
@@ -2492,10 +2556,10 @@ CODE:  ALTER TABLE table_name
 #When we use CASCADE it removes(drops) any foreign key which references the primary key
 ```
 
-## GROUP   BY(COMING SOON)
+## GROUP   BY(COMING SOON)(IMPORTANT)
 
-```
-
+```sql
+#GROUP BY IS AN MULTIPLE ROW FUNTION LIKE AGGREGATE FUNCTION
 ```
 
 ## JOINS
@@ -2593,6 +2657,95 @@ ramu * (absent + NULL + NULL)
 
 THE ORDER WOULD HAVE BEEN CHANGED IF THE COLUMN present WAS WRITTEN BEFRORE THE name column.
 ```
+
+### TABLE    ALIASES
+
+```sql
+#TABLE ALIASES
+
+LIKE COLUMN ALIASES WE CAN HAVE ALIAS NAME FOR TABLES TOO
+
+SYNTAX:  SELECT table_alias_1.coloumn_name , table_alias_2
+		FROM tabel_name_1 table_alias_1 , table_name_2 table_alias_2;
+
+CONSIDER THE TABLES BELOW
+
+                                	TABLE NAME: records
+                +-----+--------------+------------------+------+-------------+
+                | sno | student_name | email            | year | column_name |
+                +-----+--------------+------------------+------+-------------+
+                |   1 | ram          | ram@gmail.com    | 2004 |          10 |
+                |   2 | sam          | sam@yahoo.com    | 2003 |          20 |
+                |   3 | hari         | hari@outlook.com | 2002 |          30 |
+                |   4 | ramu         | ramu@gmail.com   | 2004 |          20 |
+                +-----+--------------+------------------+------+-------------+
+
+
+                                    TABLE NAME: test_table
+
+                                    +------+------+---------+
+                                    | name | year | present |
+                                    +------+------+---------+
+                                    | ram  | 2004 | NULL    |
+                                    | NULL | NULL | NULL    |
+                                    | sam  | 2001 | absent  |
+                                    +------+------+---------+  
+ 
+                                   TABLE NAME: test_table_3
+                    +-----+--------------+------------------+---------------+-------------+
+                    | sno | student_name | email            | year_of_birth | column_name |
+                    +-----+--------------+------------------+---------------+-------------+
+                    |   1 | ram          | ram@gmail.com    |          2004 |          10 |
+                    |   2 | sam          | sam@yahoo.com    |          2003 |          20 |
+                    |   3 | hari         | hari@outlook.com |          2002 |          30 |
+                    |   4 | ramu         | ramu@gmail.com   |          2004 |          20 |
+                    +-----+--------------+------------------+---------------+-------------+
+
+CODE: SELECT a1.student_name , a2.year_of_birth
+	  FROM records a1 , test_table_3 a2;
+
+OUTPUT:
+        +--------------+---------------+
+        | student_name | year_of_birth |
+        +--------------+---------------+
+        | ramu         |          2004 |
+        | hari         |          2004 |
+        | sam          |          2004 |
+        | ram          |          2004 |
+        | ramu         |          2003 |
+        | hari         |          2003 |
+        | sam          |          2003 |
+        | ram          |          2003 |
+        | ramu         |          2002 |
+        | hari         |          2002 |
+        | sam          |          2002 |
+        | ram          |          2002 |
+        | ramu         |          2004 |
+        | hari         |          2004 |
+        | sam          |          2004 |
+        | ram          |          2004 |
+        +--------------+---------------+
+
+#WE CAN AVOID THE ABIVE SITUATION USING WHERE CLAUSE
+
+CODE: SELECT a1.student_name , a2.year_of_birth
+	  FROM records a1 , test_table_3 a2
+	  WHERE a1.sno = a2.sno;
+
+OUTPUT:
+        +--------------+---------------+
+        | student_name | year_of_birth |
+        +--------------+---------------+
+        | ram          |          2004 |
+        | sam          |          2003 |
+        | hari         |          2002 |
+        | ramu         |          2004 |
+        +--------------+---------------+
+
+WE CAN ALSO OTHER CONDITION WITH WHERE CLAUSE
+```
+
+
 
 ### EQUI  -  JOIN
 
@@ -3012,7 +3165,23 @@ OUTPUT:
     Enter the year:2003
     [(1, 'ram', 'ram@gmail.com', 2004, 10), (4, 'ramu', 'ramu@gmail.com', 2004, 20)]
 
-#OLD WAY TO FORMAT STRINGS (COMING SOON)
+#OLD WAY TO FORMAT STRINGS 
+
+#This type of formating is used in C language
+
+%s  ---> To be used with string (can also be used with numbers)
+%d  ---> To be used with integers
+%f  ---> To use used with float 
+
+%char acts like {}
+
+CODE:
+	name = "ram"
+	age = 20
+	print("My name is %s and I am %d years old." % (name, age))
+
+OUTPUT:
+	   My name is ram and I am 20 years old
 ```
 
 ### cursor.commit()
@@ -3029,7 +3198,7 @@ cursor.commit()
 
 
 
-### INSERTING    RECORDS   USING   MYSQL.CONNECTOR()    ----> IMPORTANT
+### INSERTING    RECORDS   USING   MYSQL.CONNECTOR()
 
 ```python
 #Creaing a cursor
@@ -3104,7 +3273,7 @@ connector.close()
 
 ```
 
-### DELETING   RECORDS  USING   MYSQL.CONNECTOR()   --->    IMPORTANT
+### DELETING   RECORDS  USING   MYSQL.CONNECTOR()  
 
 ```python
 #Creaing a curosor
@@ -3225,4 +3394,6 @@ database connectivity applications
 - [x] NETWORKING 
 
 - [x] SQL
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Ft-sibiraj%2Fsql&count_bg=%230963E5&title_bg=%230EE915&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://hits.seeyoufarm.com) <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Ft-sibiraj%2Fsql&count_bg=%230963E5&title_bg=%230EE915&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true"/></a>
 
