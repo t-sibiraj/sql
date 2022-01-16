@@ -3395,5 +3395,9 @@ database connectivity applications
 
 - [x] SQL
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Ft-sibiraj%2Fsql&count_bg=%230963E5&title_bg=%230EE915&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://hits.seeyoufarm.com) <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Ft-sibiraj%2Fsql&count_bg=%230963E5&title_bg=%230EE915&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true"/></a>
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Ft-sibiraj%2Fsql&count_bg=%230963E5&title_bg=%230EE915&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://t-sibiraj.github.io/) <a href="https://t-sibiraj.github.io/"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Ft-sibiraj%2Fsql&count_bg=%230963E5&title_bg=%230EE915&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true"/></a>
+
+
+
+
 
