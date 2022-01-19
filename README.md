@@ -1,4 +1,4 @@
-https://github.com/t-sibiraj/sql            [Light Mode](https://t-sibiraj.github.io/sql/)             [Dark Mode](https://htmlpreview.github.io/?https://github.com/t-sibiraj/sql/blob/main/index-dark.html)            [Download](https://github.com/t-sibiraj/sql/raw/main/sql.pdf)             [More](https://htmlpreview.github.io/?https://github.com/t-sibiraj/sql/blob/main/more.html)
+https://github.com/t-sibiraj/sql            [Light Mode](https://t-sibiraj.github.io/sql/)             [Dark Mode](https://htmlpreview.github.io/?https://github.com/t-sibiraj/sql/blob/main/index-dark.html)            [Download](https://github.com/t-sibiraj/sql/raw/main/sql.pdf)             [More](hhttps://github.com/t-sibiraj/learn)
 
 # DATABASE CONCEPTS:
 
@@ -201,7 +201,7 @@ The number of tuple(record)(rows) in a table
 Cardinality ---> no of rows
 ```
 
-![‪](images\cbse-keys.jpg)
+![](images/cbse-keys.jpg)
 															SOURCE: cbseacademic.com
 
 ```
@@ -2310,7 +2310,7 @@ WE CAN'' DO THAT USING TRUNCATE
                                     DELETE VS TRUNCATE
 ```
 
-![image-20220113005614894](images\image-20220113005614894.png)
+![image-20220113005614894](images/image-20220113005614894.png)
 
 ​																		SOURCE: t-sibiraj.github.io/sql
 
@@ -2627,7 +2627,7 @@ CODE: SELECT *
 #Each row in records table will be multiplied with all the row from test_table
 ```
 
-![image-20220113030716529](images\image-20220113030716529.png)
+![image-20220113030716529](images/image-20220113030716529.png)
 
 ​																		SOURCE: t-sibiraj.github.io/sql
 
@@ -2643,7 +2643,7 @@ CODE: SELECT student_name , present
 ----> student_name [cartesian product] present
 ```
 
-![image-20220113031336907](images\image-20220113031336907.png)
+![image-20220113031336907](images/image-20220113031336907.png)
 
 ​																	SOURCE: t-sibiraj.github.io/sql
 
@@ -2776,7 +2776,7 @@ repository: storage location for software packages
 PIP is nothing but a package management system. It is used to download libraries , modules created by other people  which they have uploaded to PyPI.
 ```
 
-![image-20220113034025814](images\image-20220113034025814.png)
+![image-20220113034025814](images/image-20220113034025814.png)
 
 ​																				SOURCE: pypi.org     
 
