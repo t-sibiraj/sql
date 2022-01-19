@@ -1,0 +1,29 @@
+.box{
+	border:  4px solid white;
+	padding: 50px;
+	box-shadow:5px 5px 2px 2px white;
+	margin: 10px;
+	width: 50%;
+	height: 30px;
+	text-align: center;
+	font-size: 30px;
+	background-color: black;
+}
+
+.box:hover{
+	background-color: grey;
+}
+
+.box a{
+	text-decoration: none;
+	color: white;
+	font-family: monospace;
+
+}
+
+.more1{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
