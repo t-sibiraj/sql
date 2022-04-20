@@ -1,5 +1,5 @@
 def sql_table_to_md_table(sql_table):
-    """Used to convert SQL Table to Markdown Table
+    """Used to convert SQL output table format to Markdown table format
         +------+             |------|
         | year |             | year |
         +------+             |------|
